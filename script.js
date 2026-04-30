@@ -6,7 +6,7 @@
 // ── Page navigation ───────────────────────────
 let currentSection = null;
 
-/* SESUDAH */
+/* SESUDAH (DENGAN CINEMATIC LOADER) */
 function openSection(id) {
   const home = document.getElementById('homepage');
   const target = document.getElementById(id);
@@ -15,19 +15,32 @@ function openSection(id) {
   const bgVideo = document.querySelector('.bg-video');
   if (bgVideo) bgVideo.pause();
 
-  home.classList.remove('active');
-  if (currentSection) {
-    document.getElementById(currentSection)?.classList.remove('active');
-  }
+  // 1. PANGGIL LAYAR HITAM LOADER
+  const loader = document.getElementById('cinematic-loader');
+  loader.classList.add('show-loader');
 
+  // 2. TUNGGU 800ms (Beri waktu browser nafas & load video)
   setTimeout(() => {
+    // Sembunyikan home & section lain
+    home.classList.remove('active');
+    if (currentSection) {
+      document.getElementById(currentSection)?.classList.remove('active');
+    }
+
+    // Tampilkan section tujuan
     target.classList.add('active');
     currentSection = id;
 
+    // Play video autoplay jika ada
     target.querySelectorAll('video[autoplay]').forEach(v => {
       v.play().catch(e => console.log("Menunggu interaksi user..."));
     });
 
+    // 3. HILANGKAN LAYAR HITAM LOADER (Fade Out)
+    loader.classList.remove('show-loader');
+
+  }, 800); // Angka 800 ini adalah 0.8 detik. Bisa kamu ubah ke 1000 (1 detik) kalau IDM-nya butuh waktu lebih lama.
+}
 
     // Init drag scroll setiap kali section dibuka
     // Ini memastikan semua track terdaftar meski baru muncul
