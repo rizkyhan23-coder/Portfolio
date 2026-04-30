@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Rizky Hanum </title>
+  <link rel="stylesheet" href="style.css" />
+  <!--
+    FONTS: Playfair Display (headings) + Inter (body/UI)
+    Untuk ganti font: ubah nama di URL ini dan di CSS :root
+  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════
+     HOMEPAGE
+════════════════════════════════════════ -->
+  <div id="homepage" class="page active">
+    <div class="bg-grain"></div>
+    <div class="bg-vignette"></div>
+    <!--
+    BACKGROUND VIDEO (opsional)
+    Uncomment dan set src saat siap:
+
+    <video class="bg-video" autoplay muted loop playsinline poster="assets/images/bg-poster.jpg">
+      <source src="assets/videos/THE HOUSE OF LOST AND FOUND_ASKARA_1.mp4" type="video/mp4"/>
+    </video>
+      -->
+    <header class="top-bar">
+      <span class="logo-mark"></span>
+      <span class="top-tagline">Available for projects</span>
+    </header>
+
+    <main class="hero">
+      <div class="hero-rule"></div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="assets/images/Profile picture.JPEG" alt="Profile Photo" onerror="this.style.display='none'" />
+          <div class="photo-placeholder"></div>
+        </div>
+        <div class="hero-ring"></div>
+        <div class="hero-ring-outer"></div>
+      </div>
+      <h1 class="hero-name">Rizky Hanum </h1>
+      <p class="hero-title">Director &amp; Video Editor</p>
+      <div class="hero-divider"></div>
+      <p class="hero-bio">Crafting visuals for brands, stories, and digital campaigns.<br />Based in Surabaya,
+        Indonesia.</p>
+    </main>
+
+    <nav class="action-nav left">
+      <button class="action-btn" onclick="openSection('filmography')">
+        <span class="btn-num">01</span>
+        <span class="btn-label">Filmography</span>
+        <span class="btn-sub">Film &amp; Music Videos</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <button class="action-btn" onclick="openSection('video-editing')">
+        <span class="btn-num">02</span>
+        <span class="btn-label">Video Editing</span>
+        <span class="btn-sub">Highlight Editing Works</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </nav>
+
+    <nav class="action-nav right">
+      <button class="action-btn" onclick="openSection('motion-design')">
+        <span class="btn-num">03</span>
+        <span class="btn-label">Motion Design</span>
+        <span class="btn-sub">Key Visual &amp; Motion graphics</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <button class="action-btn" onclick="openSection('content-creation')">
+        <span class="btn-num">04</span>
+        <span class="btn-label">Content Creation</span>
+        <span class="btn-sub">Social Media</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </nav>
+
+    <footer class="bottom-bar">
+      <a href="mailto:rhvisualcompany@gmail.com" class="contact-link">rhvisualcompany@gmail.com</a>
+      <span class="sep">·</span>
+      <a href="https://instagram.com/rizkyhanum" target="_blank" class="contact-link">@rizkyhanum</a>
+      <span class="sep">·</span>
+      <a href="https://linkedin.com/in/rizkyhanum" target="_blank" class="contact-link">Linkedin</a>
+    </footer>
+  </div>
+
+  <!-- ════════════════════════════════════════
+     01 — FILMOGRAPHY
+     Default layout : landscape (16:10) cards, horizontal scroll
+     ────────────────────────────────────────
+     ▶ PORTRAIT MODE (opsional):
+       Di style.css, pada .film-card ubah:
+         width: 200px;
+       Dan pada .film-still ubah:
+         aspect-ratio: 2/3;      (atau 3/4 untuk lebih lebar)
+       Hapus juga baris:
+         .film-card:first-child { width: 320px; }
+       Semua kartu akan otomatis jadi portrait.
+════════════════════════════════════════ -->
+  <div id="filmography" class="page section-page">
+    <div class="bg-grain"></div>
+    <div class="section-header">
+      <button class="back-btn" onclick="closeSection()">← Back</button>
+      <div class="section-title-group">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Filmography</h2>
+      </div>
+      <p class="section-desc">A selection of films and production from my directing &amp; cinematography work.</p>
+    </div>
+
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+
+        <!-- ═══ FILM CARD — duplikat blok ini untuk menambah karya ═══ -->
+        <div class="film-card" data-title="The House of Lost and Found" data-role="Director"
+          data-video=local:assets/videos/film1.mp4
+          data-images="assets/images/STILL THOLAF 6.jpg,assets/images/THOLAF.jpg,assets/images/STILL THOLAF 2.jpg,assets/images/STILL THOLAF 3.jpg">
+          <div class="film-still">
+            <img src="assets/images/STILL THOLAF 5.jpg" alt="Film 1"
+              onerror="this.parentElement.classList.add('no-img')" />
+            <div class="film-overlay">
+              <span class="film-year">2025</span>
+              <button class="film-expand" onclick="openFilmModalFromCard(this)">View</button>
+            </div>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">The House of Lost and Found</h3>
+            <p class="film-role">Director</p>
+            <p class="film-desc">Raka ingin memecahkan teka-teki surat dari mendiang Ibunya namun Bima datang ingin
+              menjual rumah Ibunya.</p>
+          </div>
+        </div>
+
+        <div class="film-card" data-title="Calinn - Strangers (Official Music Video)" data-role="Director"
+          data-video="assets/videos/STRANGERS MV FINAL_1.MP4"
+          data-images="assets/images/STILL STRANGERS 2 (1).jpg,assets/images/STILL STRANGERS 4.jpg,assets/images/STILL STRANGERS 3.jpg,assets/images/STILL STRANGERS 5.jpg">
+          <div class="film-still">
+            <img src="assets/images/STILL STRANGERS 1 (1).jpg" alt="Film 2"
+              onerror="this.parentElement.classList.add('no-img')" />
+            <div class="film-overlay">
+              <span class="film-year">2023</span>
+              <button class="film-expand" onclick="openFilmModalFromCard(this)">View</button>
+            </div>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Calinn - Strangers (Official Music Video)</h3>
+            <p class="film-role">Director</p>
+            <p class="film-desc">Starring Reinhard Joshua & Cliff Sigarlaki</p>
+          </div>
+        </div>
+
+        <div class="film-card" data-title="PSA - Investigasi Roki" data-role="Director"
+          data-video="assets/videos/Investigasi Roki.mp4"
+          data-images="assets/images/STILL IR 1.jpg,assets/images/STILL IR 2.jpg,assets/images/STILL IR 3.jpg">
+          <div class="film-still">
+            <img src="assets/images/INVESTIGASI ROKI.jpg" alt="Film 3"
+              onerror="this.parentElement.classList.add('no-img')" />
+            <div class="film-overlay">
+              <span class="film-year">2025</span>
+              <button class="film-expand" onclick="openFilmModalFromCard(this)">View</button>
+            </div>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">PSA - Investigasi Roki</h3>
+            <p class="film-role">Director</p>
+            <p class="film-desc">Roki bersama penggunanya akan mewawancarai fasilitas umum yang dirusak olehnya.</p>
+          </div>
+        </div>
+
+        <div class="film-card" data-title="Lekas Beranjak" data-role="Cinematographer"
+          data-video="assets/videos/aaaa.mp4"
+          data-images="assets/images/LEKAS BERANJAK (1).jpg,assets/images/LEKAS BERANJAK (2).jpg,assets/images/LEKAS BERANJAK (4).jpg">
+          <div class="film-still">
+            <img src="assets/images/LEKAS BERANJAK (5).jpg" alt="Film 3"
+              onerror="this.parentElement.classList.add('no-img')" />
+            <div class="film-overlay">
+              <span class="film-year">2023</span>
+              <button class="film-expand" onclick="openFilmModalFromCard(this)">View</button>
+            </div>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Lekas Beranjak</h3>
+            <p class="film-role">Cinematographer</p>
+            <p class="film-desc"></p>
+          </div>
+        </div>
+
+
+        <div class="film-card" data-title="Tahun Baru Garda" data-role="Producer" data-video="assets/videos/aaa.mp4"
+          data-images="assets/images/THOLAF.jpg,assets/images/THOLAF.jpg,assets/images/THOLAF.jpg">
+          <div class="film-still">
+            <img src="assets/images/film3.jpg" alt="Film 3" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="film-overlay">
+              <span class="film-year">2022</span>
+              <button class="film-expand" onclick="openLightbox(this)">View</button>
+            </div>
+          </div>
+          <div class="film-meta">
+            <h3 class="film-title">Tahun Baru Garda</h3>
+            <p class="film-role">Producer</p>
+            <p class="film-desc"></p>
+          </div>
+        </div>
+
+      </div><!-- /gallery-track -->
+    </div><!-- /gallery-scroll -->
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+     02 — VIDEO EDITING
+     Default layout : landscape (16:9) cards, horizontal scroll
+     ────────────────────────────────────────
+     ▶ PORTRAIT MODE (opsional — cocok untuk short-form / Reels edit reel):
+       Di style.css, pada .video-thumb ubah:
+         aspect-ratio: 9/16;
+       Dan pada .video-card ubah:
+         width: 180px;
+       Hapus juga baris:
+         .video-card:first-child { width: 360px; }
+     ────────────────────────────────────────
+     ▶ EMBED OPTIONS:
+       YouTube : <iframe src="https://www.youtube.com/embed/VIDEO_ID" ...></iframe>
+       Vimeo   : <iframe src="https://player.vimeo.com/video/VIDEO_ID" ...></iframe>
+       Lokal   : <video controls><source src="assets/videos/nama.mp4"/></video>
+       TikTok/IG : tidak support iframe — download & gunakan video lokal.
+════════════════════════════════════════ -->
+  <div id="video-editing" class="page section-page">
+    <div class="bg-grain"></div>
+    <div class="section-header">
+      <button class="back-btn" onclick="closeSection()">← Back</button>
+      <div class="section-title-group">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Video Editing</h2>
+      </div>
+      <p class="section-desc">Selected project to showcasing style, pacing &amp; narrative structure.</p>
+    </div>
+
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+
+        <!-- ═══ VIDEO CARD — duplikat blok ini untuk menambah karya ═══ -->
+        <div class="video-card">
+          <div class="video-thumb">
+            <video controls playsinline preload="metadata" poster="assets/images/thumbnail-video1.jpg">
+              <source src="assets/videos/Liugong Profile_1.mp4" />
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">LiuGong Company Profile</h3>
+            <p class="video-role">Editor</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <video controls>
+              <source src="assets/videos/Rendang Mamaks.mp4" />
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">Rendi &amp; Maksi Rendang Mamaks Advertisement</h3>
+            <p class="video-role">Editor</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <video controls>
+              <source src="assets/videos/liugong sub eng.mp4" />
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">LiuGong IKN</h3>
+            <p class="video-role">Editor</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <video controls>
+              <source src="assets/videos/Profira Anniversary (60s)_1.mp4" />
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">Profira Anniversary</h3>
+            <p class="video-role">Editor &amp; Colorist</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <iframe width="1183" height="665" src="https://www.youtube.com/embed/FVGgXStJ5xs"
+              title="Why Fans Are Losing Their Minds Over &#39;Deadpool &amp; Wolverine&#39;" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">Why Fans Are Losing Their Minds Over &#39;Deadpool &amp; Wolverine&#39</h3>
+            <p class="video-role">Editor</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <iframe width="1183" height="665" src="https://www.youtube.com/embed/j3wgMHivUmQ"
+              title="The Real Hugh Jackman You Don&#39;t See on Screen!" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-meta">
+            <h3 class="video-title">The Real Hugh Jackman You Don&#39;t See on Screen!</h3>
+            <p class="video-role">Editor</p>
+            <p class="video-desc"></p>
+          </div>
+        </div>
+
+      </div><!-- /gallery-track -->
+    </div><!-- /gallery-scroll -->
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+     03 — MOTION DESIGN
+     Layout : event-based grouping
+              vertical scroll antar event
+              horizontal scroll per video dalam event
+     ────────────────────────────────────────
+     CARA TAMBAH EVENT BARU:
+     Duplikat seluruh <section class="motion-event"> ini,
+     ganti event-name, event-meta, dan isi video-nya.
+ 
+     CARA TAMBAH VIDEO DI DALAM EVENT:
+     Duplikat blok <div class="motion-card"> di dalam
+     .motion-event-track, ganti src video/iframe-nya.
+ 
+     EMBED OPTIONS:
+     ① YouTube autoplay muted loop (via Go Live / deployed):
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&modestbranding=1&playsinline=1" ...></iframe>
+ 
+     ② Video lokal MP4 (development & deployed):
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/thumb.jpg">
+          <source src="assets/videos/nama.mp4" type="video/mp4"/>
+        </video>
+════════════════════════════════════════ -->
+  <div id="motion-design" class="page section-page">
+    <div class="bg-grain"></div>
+    <div class="section-header">
+      <button class="back-btn" onclick="closeSection()">← Back</button>
+      <div class="section-title-group">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Motion Design</h2>
+      </div>
+      <p class="section-desc">Key visuals, bumpers, and motion graphics for live events.</p>
+    </div>
+
+    <!-- Vertical scroll — antar event -->
+    <div class="motion-scroll">
+
+      <!-- ══════════════════════════════════════
+         EVENT 1
+         DUPLIKAT seluruh <section> ini untuk event baru
+    ══════════════════════════════════════ -->
+      <section class="motion-event">
+
+        <!-- Event header -->
+        <div class="motion-event-header">
+          <div class="motion-event-left">
+            <span class="motion-event-index">01</span>
+            <h3 class="motion-event-name">Voice of Borneo</h3>
+          </div>
+          <div class="motion-event-right">
+            <span class="motion-event-year">2026</span>
+            <p class="motion-event-type">Opening Bumper &amp; Coming up next Guest star </p>
+          </div>
+        </div>
+
+        <!-- Horizontal scroll — video dalam event ini -->
+        <div class="motion-event-scroll-wrap">
+          <div class="motion-event-track">
+
+            <!-- ═ VIDEO CARD — duplikat untuk tambah video di event ini ═ -->
+            <div class="motion-card featured">
+              <!-- Video lokal: -->
+              <div class="motion-card-video">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/VOB.jpg">
+                  <source src="assets/videos/VOB_1.mp4" type="video/mp4" />
+                </video>
+                <!-- YouTube (hapus video di atas, uncomment ini):
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&modestbranding=1&playsinline=1"
+                frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+              </iframe>
+              -->
+              </div>
+              <div class="motion-card-meta">
+                <p class="motion-card-title">Opening Bumper</p>
+              </div>
+            </div>
+
+            <div class="motion-card">
+              <div class="motion-card-video">
+                <video autoplay muted loop playsinline preload="metadata"
+                  poster="assets/images/event1-video2-thumb.jpg">
+                  <source src="assets/videos/TULUS_1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="motion-card-meta">
+                <p class="motion-card-title">TULUS</p>
+              </div>
+            </div>
+
+            <div class="motion-card">
+              <div class="motion-card-video">
+                <video autoplay muted loop playsinline preload="metadata"
+                  poster="assets/images/event1-video3-thumb.jpg">
+                  <source src="assets/videos/TENXI_1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="motion-card-meta">
+                <p class="motion-card-title">TENXI</p>
+              </div>
+            </div>
+
+          </div><!-- /motion-event-track -->
+        </div><!-- /motion-event-scroll-wrap -->
+
+      </section><!-- /motion-event -->
+
+
+      <!-- ══════════════════════════════════════
+         EVENT 2
+         DUPLIKAT seluruh <section> ini untuk event baru
+    ══════════════════════════════════════ -->
+      <section class="motion-event">
+
+        <div class="motion-event-header">
+          <div class="motion-event-left">
+            <span class="motion-event-index">02</span>
+            <h3 class="motion-event-name">Efestaphoria</h3>
+          </div>
+          <div class="motion-event-right">
+            <span class="motion-event-year">2025</span>
+            <p class="motion-event-type">Bumper &amp; Coming up next guest star</p>
+          </div>
+        </div>
+
+        <div class="motion-event-scroll-wrap">
+          <div class="motion-event-track">
+
+            <div class="motion-card featured">
+              <div class="motion-card-video ratio-efesta">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/videos/Bumper 30s (CENTER)_1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="motion-card-meta">
+                <p class="motion-card-title">Opening Bumper</p>
+              </div>
+            </div>
+
+            <div class="motion-card">
+              <div class="motion-card featured">
+                <div class="motion-card-video ratio-efesta">
+                  <video autoplay muted loop playsinline preload="metadata">
+                    <source src="assets/videos/HND_1.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="motion-card-meta">
+                  <p class="motion-card-title">Logo Reveal</p>
+                </div>
+              </div>
+
+            </div><!-- /motion-event-track -->
+          </div><!-- /motion-event-scroll-wrap -->
+
+      </section><!-- /motion-event -->
+
+      <section class="motion-event">
+
+        <div class="motion-event-header">
+          <div class="motion-event-left">
+            <span class="motion-event-index">03</span>
+            <h3 class="motion-event-name">Johnny Andrean Awards</h3>
+          </div>
+          <div class="motion-event-right">
+            <span class="motion-event-year">2025</span>
+            <p class="motion-event-type">Key Visual Bumper</p>
+          </div>
+        </div>
+
+        <div class="motion-event-scroll-wrap">
+          <div class="motion-event-track">
+
+            <div class="motion-card featured">
+              <div class="motion-card-video ratio-jaa">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/videos/bumper for opening_1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="motion-card-meta">
+                <p class="motion-card-title">Bumper</p>
+              </div>
+            </div>
+
+            <div class="motion-card">
+              <div class="motion-card featured">
+                <div class="motion-card-video ratio-jaa">
+                  <video autoplay muted loop playsinline preload="metadata">
+                    <source src="assets/videos/Opening full version_1.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="motion-card-meta">
+                  <p class="motion-card-title">Opening Sequence</p>
+                </div>
+              </div>
+
+            </div><!-- /motion-event-track -->
+          </div><!-- /motion-event-scroll-wrap -->
+
+      </section><!-- /motion-event -->
+      <!-- ════ EVENT BARU — paste <section class="motion-event"> di sini ════ -->
+
+    </div><!-- /motion-scroll -->
+  </div><!-- /motion-design -->
+
+
+  <!-- ════════════════════════════════════════
+     04 — CONTENT CREATION
+     Layout  : vertical scroll antar brand
+     Brand 2 (4:5 + Reels) tampil pertama — scroll ke bawah untuk Brand 1
+     ────────────────────────────────────────
+     CARA TAMBAH BRAND BARU:
+       • Format 4:5 + Reels  → copy <section class="brand-section layout-45-reels">
+       • Format 1:1 + Reels  → copy <section class="brand-section layout-11-reels">
+       Paste di bawah brand terakhir, ganti brand-index/name/desc dan src media.
+════════════════════════════════════════ -->
+  <div id="content-creation" class="page section-page">
+    <div class="bg-grain"></div>
+    <div class="section-header">
+      <button class="back-btn" onclick="closeSection()">← Back</button>
+      <div class="section-title-group">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Content Creation</h2>
+      </div>
+      <p class="section-desc">Brand campaigns and Social media content</p>
+    </div>
+
+    <div class="content-scroll">
+
+      <!-- ══════════════════════════════════════════
+       BRAND 3 — Chao Phraya Thai Fine Cuisine
+       Layout: 4:5 carousel + 2 reels 9:16
+       ──────────────────────────────────────────
+       DUPLIKAT section ini untuk brand 4:5 lainnya.
+  ══════════════════════════════════════════ -->
+      <section class="brand-section layout-45-reels">
+        <div class="brand-header">
+          <span class="brand-index">01.</span>
+          <h3 class="brand-name">Chao Phraya Thai Fine Cuisine</h3>
+          <p class="brand-desc">Photographer, Videographer, &amp; Editor</p>
+        </div>
+
+        <div class="brand-grid brand-scroll-track">
+
+          <!-- Kiri: carousel post 4:5, stacked vertikal -->
+          <div class="carousel-col col-grid-2">
+
+            <!-- ═ POST — duplikat .content-item ini untuk tambah post 4:5 ═ -->
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 1.jpg" alt="Post 1"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Thai Select</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 2.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Why it Matter?</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 3.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">The Ultimate Event Feast</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 4.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Pause the Rush</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 5.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Krapao Kai</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CP 6.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Why do We Break Fast</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+          </div><!-- /carousel-col -->
+
+          <!-- Kanan: 2 reels 9:16 -->
+          <div class="reels-col">
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/0311(4).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">We Make you Enjoy</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/0409(2).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Details in Chao Phraya</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/CONTENT CP 2.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Tom Yum In the making</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+          </div><!-- /reels-col -->
+
+        </div><!-- /brand-grid -->
+      </section>
+
+      <!-- ══════════════════════════════════════════
+       BRAND 1 — IM3 East Java
+       Layout: 1:1 carousel (2×2) + 2 reels 9:16
+  ══════════════════════════════════════════ -->
+      <section class="brand-section layout-11-reels">
+        <div class="brand-header">
+          <span class="brand-index">02.</span>
+          <h3 class="brand-name">IM3 East Java</h3>
+          <p class="brand-desc">Editor</p>
+        </div>
+
+        <div class="brand-grid brand-scroll-track">
+
+          <!-- Kiri: 4 carousel post 1:1 dalam grid 2×2 -->
+          <div class="carousel-col">
+            <div class="square-grid-2x2">
+
+              <div class="content-item">
+                <div class="content-media ratio-square">
+                  <video autoplay muted loop playsinline poster="assets/images/thumb-im3-post1.jpg">
+                    <source src="assets/videos/IM3 (7).mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="content-overlay">
+                  <p class="content-title">Careful of Scam!</p>
+                  <p class="content-role">Carousel</p>
+                </div>
+              </div>
+
+              <div class="content-item">
+                <div class="content-media ratio-square">
+                  <video autoplay muted loop playsinline poster="assets/images/thumb-im3-post1.jpg">
+                    <source src="assets/videos/IM3 (5).mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="content-overlay">
+                  <p class="content-title">Kartini</p>
+                  <p class="content-role">Carousel</p>
+                </div>
+              </div>
+
+              <div class="content-item">
+                <div class="content-media ratio-square">
+                  <video autoplay muted loop playsinline poster="assets/images/thumb-im3-post1.jpg">
+                    <source src="assets/videos/IM3 (2).mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="content-overlay">
+                  <p class="content-title">How to Stay Im3zing</p>
+                  <p class="content-role">Carousel</p>
+                </div>
+              </div>
+
+              <div class="content-item">
+                <div class="content-media ratio-square">
+                  <video autoplay muted loop playsinline poster="assets/images/thumb-im3-post1.jpg">
+                    <source src="assets/videos/Rekomendasi Kudapan.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="content-overlay">
+                  <p class="content-title">Rekomendasi Kudapan</p>
+                  <p class="content-role">Carousel</p>
+                </div>
+              </div>
+            </div><!-- /square-grid-2x2 -->
+          </div><!-- /carousel-col -->
+
+          <!-- Kanan: 2 reels 9:16 -->
+          <div class="reels-col">
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline poster="assets/images/brand1-reel1-thumb.jpg">
+                  <source src="assets/videos/IM3 (6).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Hot Promo</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline poster="assets/images/brand1-reel2-thumb.jpg">
+                  <source src="assets/videos/IM3 (4).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Ramadhan 2024</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline poster="assets/images/brand1-reel2-thumb.jpg">
+                  <source src="assets/videos/IM3.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Podcast trailer</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline poster="assets/images/brand1-reel2-thumb.jpg">
+                  <source src="assets/videos/IM3 (3).mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">IM3 Video Competition</p>
+                <p class="content-role">ReelS</p>
+              </div>
+            </div>
+          </div><!-- /reels-col -->
+
+        </div><!-- /brand-grid -->
+      </section>
+
+
+      <!-- ══════════════════════════════════════════
+       BRAND 2 — Corica Pastries
+       Layout: 4:5 carousel (2×2 grid) + 2 reels 9:16
+       ──────────────────────────────────────────
+       DUPLIKAT section ini untuk brand 4:5 lainnya.
+       Ganti brand-name, brand-desc, dan src gambar/video.
+  ══════════════════════════════════════════ -->
+      <section class="brand-section layout-45-reels">
+        <div class="brand-header">
+          <span class="brand-index">03.</span>
+          <h3 class="brand-name">Corica Pastries</h3>
+          <p class="brand-desc">Photographer, Videographer, &amp; Editor</p>
+        </div>
+
+        <div class="brand-grid brand-scroll-track">
+
+          <!-- Kiri: carousel post 4:5, grid 2 kolom × 2 baris -->
+          <div class="carousel-col col-grid-2">
+
+            <!-- ═ POST — duplikat .content-item ini untuk tambah post 4:5 ═ -->
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR.jpg" alt="Post 1"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Apple Strudel</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR 2.jpg" alt="Post 2"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">One Slice Won't Hurt</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR 3.jpg" alt="Post 3"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Strawberry Strudel</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <!-- Post 4 — baris ke-2 kolom ke-2. Tambah post di sini -->
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR 5.jpg" alt="Post 4"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Carbs Worth Falling for</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR 4.jpg" alt="Post 1"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Fresh Picks</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-45">
+                <img src="assets/images/CONTENT CR 6.jpg" alt="Post 1"
+                  onerror="this.parentElement.classList.add('no-media')" />
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Smoke beef &amp; Apple Strudel toast</p>
+                <p class="content-role">Carousel</p>
+              </div>
+            </div>
+          </div><!-- /carousel-col -->
+
+          <!-- Kanan: 2 reels 9:16 -->
+          <div class="reels-col">
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/REELS 19 APR REV1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">The Art of our Strawberry Tart Pie</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/REELS 17 APR REV.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Blueberry Lemonade</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/CONTENT CR 1.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">Restocking our Goods</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+
+            <div class="content-item">
+              <div class="content-media ratio-reel">
+                <video autoplay muted loop playsinline preload="metadata" poster="assets/images/brand2-reel2-thumb.jpg">
+                  <source src="assets/videos/CONTENT CR 2.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="content-overlay">
+                <p class="content-title">You might Fall in Loaf</p>
+                <p class="content-role">Reels</p>
+              </div>
+            </div>
+          </div><!-- /reels-col -->
+
+        </div><!-- /brand-grid -->
+      </section>
+
+      <!-- ════ BRAND BARU — paste section baru di sini ════ -->
+
+    </div><!-- /content-scroll -->
+
+  </div>
+
+
+  <!-- ░░░ LIGHTBOX ░░░ -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <img id="lb-img" src="" alt="Full view" />
+  </div>
+
+  <!-- ░░░ FILM DETAIL MODAL ░░░ -->
+  <div id="film-modal" class="fm-backdrop" onclick="closeFmOutside(event)">
+    <div class="fm-panel">
+
+      <!-- Close button -->
+      <button class="fm-close" onclick="closeFilmModal()">✕</button>
+
+      <!-- Header: title + role -->
+      <div class="fm-header">
+        <h2 class="fm-title" id="fm-title">Judul Film</h2>
+        <p class="fm-role" id="fm-role">Director · Cinematographer</p>
+      </div>
+
+      <!-- Video player (hidden if no video) -->
+      <div class="fm-video-wrap" id="fm-video-wrap">
+        <iframe id="fm-video" src="" title="Film video" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+        </iframe>
+        <video id="fm-video-local" controls style="display:none; width:100%; height:100%;">
+          <source src="" type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- Still image slider -->
+      <div class="fm-slider-wrap">
+        <div class="fm-slider" id="fm-slider">
+          <!-- Images injected by JS -->
+        </div>
+      </div>
+
+    </div><!-- /fm-panel -->
+  </div><!-- /film-modal -->
+  <script src="script.js"></script>
+</body>
+
+</html>
