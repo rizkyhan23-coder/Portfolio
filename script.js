@@ -272,3 +272,17 @@ document.querySelectorAll('.gallery-track').forEach(makeDraggable);
 document.querySelectorAll('.hero-photo img').forEach(img => {
   img.addEventListener('error', () => img.style.display = 'none');
 });
+
+// Deteksi IDM dan sembunyikan src video jika terdeteksi
+function checkIDM() {
+  const videos = document.getElementsByTagName('video');
+  for (const video of videos) {
+    if (video.hasAttribute('__idm_id__')) {
+      // IDM terdeteksi — kosongkan semua src video
+      document.querySelectorAll('video source').forEach(s => s.src = '');
+      console.warn('Download manager detected.');
+      return;
+    }
+  }
+}
+setInterval(checkIDM, 1000);
