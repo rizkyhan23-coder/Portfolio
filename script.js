@@ -15,13 +15,17 @@ function openSection(id) {
   const bgVideo = document.querySelector('.bg-video');
   if (bgVideo) bgVideo.pause();
 
-  // 1. PANGGIL LAYAR HITAM LOADER
+  // 1. CARI LAYAR HITAM LOADER (Dengan Pengaman)
   const loader = document.getElementById('cinematic-loader');
-  loader.classList.add('show-loader');
+  
+  // Kalau loadernya ketemu, nyalakan layar hitamnya
+  if (loader) {
+    loader.classList.add('show-loader');
+  }
 
-  // 2. TUNGGU 800ms (Beri waktu browser nafas & load video)
+  // 2. TUNGGU 800ms
   setTimeout(() => {
-    // Sembunyikan home & section lain
+    // Sembunyikan home
     home.classList.remove('active');
     if (currentSection) {
       document.getElementById(currentSection)?.classList.remove('active');
@@ -31,15 +35,17 @@ function openSection(id) {
     target.classList.add('active');
     currentSection = id;
 
-    // Play video autoplay jika ada
+    // Play video
     target.querySelectorAll('video[autoplay]').forEach(v => {
       v.play().catch(e => console.log("Menunggu interaksi user..."));
     });
 
-    // 3. HILANGKAN LAYAR HITAM LOADER (Fade Out)
-    loader.classList.remove('show-loader');
+    // 3. HILANGKAN LAYAR HITAM LOADER
+    if (loader) {
+      loader.classList.remove('show-loader');
+    }
 
-  }, 800); // Angka 800 ini adalah 0.8 detik. Bisa kamu ubah ke 1000 (1 detik) kalau IDM-nya butuh waktu lebih lama.
+  }, 800);
 }
 
     // Init drag scroll setiap kali section dibuka
