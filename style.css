@@ -2328,3 +2328,38 @@ button {
   flex-shrink: 0 !important;
 }
 
+/* ==========================================
+   CINEMATIC SECTION LOADER
+========================================== */
+.cinematic-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg); /* Warna hitam pekat bawaan web-mu */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+/* Saat class ini ditambahkan oleh JS, layarnya jadi hitam */
+.cinematic-loader.show-loader {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loader-text {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  animation: pulse-loader 1.5s infinite;
+}
+
+@keyframes pulse-loader {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
