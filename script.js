@@ -22,7 +22,8 @@ function openSection(id) {
   setTimeout(() => {
     target.classList.add('active');
     currentSection = id;
-
+      history.pushState({ section: id }, '', `${id}`);
+     
     // Init drag scroll sesuai section — masing-masing terpisah
     if (id === 'content-creation') {
       document.querySelectorAll('.brand-scroll-track').forEach(makeDraggable);
@@ -68,6 +69,7 @@ function closeSection() {
 
     document.getElementById(currentSection)?.classList.remove('active');
     currentSection = null;
+   history.pushState({ section: null }, '', window.location.pathname);
   }
 
   setTimeout(() => {
@@ -286,3 +288,24 @@ function checkIDM() {
   }
 }
 setInterval(checkIDM, 1000);
+
+window.addEventListener('popstate', e => {
+  const section = e.state?.section;
+  if (section) {
+    openSection(section);
+  } else {
+    closeSection();
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  const validSections = ['filmography', 'video-editing', 'motion-design', 'content-creation'];
+  if (hash && validSections.includes(hash)) {
+    setTimeout(() => openSection(hash), 100);
+  }
+
+  if (!window.location.hash) {
+    history.replaceState({ section: null }, '', window.location.pathname);
+  }
+});
