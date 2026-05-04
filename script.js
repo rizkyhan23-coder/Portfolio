@@ -68,8 +68,9 @@ function closeSection() {
     if (modalLocal) modalLocal.pause();
 
     document.getElementById(currentSection)?.classList.remove('active');
-    currentSection = null;
-   history.pushState({ section: null }, '', window.location.pathname);
+    currentSection = null
+      const basePath = window.location.pathname;
+      history.pushState({ section: null }, '', basePath);
   }
 
   setTimeout(() => {
@@ -289,23 +290,86 @@ function checkIDM() {
 }
 setInterval(checkIDM, 1000);
 
+// ── Hash routing — back button & direct link ──
+
+// Handle back/forward button browser
 window.addEventListener('popstate', e => {
   const section = e.state?.section;
+
   if (section) {
-    openSection(section);
+    // Ada section di history — buka section itu
+    const home   = document.getElementById('homepage');
+    const target = document.getElementById(section);
+    if (!target) return;
+
+    home.classList.remove('active');
+    if (currentSection && currentSection !== section) {
+      document.getElementById(currentSection)?.classList.remove('active');
+    }
+
+    setTimeout(() => {
+      target.classList.add('active');
+      currentSection = section;
+
+      if (section === 'content-creation') {
+        document.querySelectorAll('.brand-scroll-track').forEach(makeDraggable);
+      }
+      if (section === 'motion-design') {
+        document.querySelectorAll('.motion-event-track').forEach(makeDraggable);
+      }
+      target.querySelectorAll('video[autoplay]').forEach(v => {
+        v.play().catch(() => {});
+      });
+    }, 80);
+
   } else {
-    closeSection();
+    // Tidak ada section — kembali ke homepage
+    if (currentSection) {
+      const leavingSection = document.getElementById(currentSection);
+      if (leavingSection) {
+        leavingSection.querySelectorAll('video').forEach(v => {
+          v.pause();
+          v.currentTime = 0;
+        });
+        leavingSection.querySelectorAll('iframe').forEach(iframe => {
+          const src = iframe.src;
+          iframe.src = '';
+          iframe.src = src;
+        });
+        leavingSection.classList.remove('active');
+      }
+      currentSection = null;
+    }
+    document.getElementById('homepage').classList.add('active');
+
+    const bgVideo = document.querySelector('.bg-video');
+    if (bgVideo) bgVideo.play();
   }
 });
 
+// Buka section langsung jika URL sudah ada hash saat pertama load
 window.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash.replace('#', '');
-  const validSections = ['filmography', 'video-editing', 'motion-design', 'content-creation'];
-  if (hash && validSections.includes(hash)) {
-    setTimeout(() => openSection(hash), 100);
-  }
+  const validSections = [
+    'filmography',
+    'video-editing',
+    'motion-design',
+    'content-creation'
+  ];
 
-  if (!window.location.hash) {
+  const hash = window.location.hash.replace('#', '');
+
+  if (hash && validSections.includes(hash)) {
+    // Ada hash valid — set homepage state dulu, lalu buka section
     history.replaceState({ section: null }, '', window.location.pathname);
+    setTimeout(() => {
+      openSection(hash);
+    }, 150);
+  } else {
+    // Tidak ada hash — set initial state homepage
+    history.replaceState({ section: null }, '', window.location.pathname);
+    // Hapus hash apapun yang mungkin tersisa
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }
 });
