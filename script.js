@@ -22,7 +22,7 @@ function openSection(id) {
   setTimeout(() => {
     target.classList.add('active');
     currentSection = id;
-      history.pushState({ section: id }, '', `${id}`);
+      history.pushState({ section: id }, '', `#${id}`);
      
     // Init drag scroll sesuai section — masing-masing terpisah
     if (id === 'content-creation') {
